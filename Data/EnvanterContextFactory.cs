@@ -9,7 +9,7 @@ public class EnvanterContextFactory : IDesignTimeDbContextFactory<EnvanterContex
     public EnvanterContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<EnvanterContext>();
-        optionsBuilder.optionsBuilder.UseNpgsql("postgresql://envanterdb_user:XqwzlDcZklWMQPsb01FBhnTqQllghjxN@dpg-d2e7hoc9c44c73egrho0-a/envanterdb");
+        optionsBuilder.UseNpgsql("postgresql://envanterdb_user:XqwzlDcZklWMQPsb01FBhnTqQllghjxN@dpg-d2e7hoc9c44c73egrho0-a/envanterdb");
         return new EnvanterContext(optionsBuilder.Options);
     }
 }
