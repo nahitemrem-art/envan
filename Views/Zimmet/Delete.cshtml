@@ -1,0 +1,25 @@
+@model EnvanterTakip.Models.Zimmet
+
+@{
+    ViewData["Title"] = "Zimmet Sil";
+}
+
+<h2>Zimmet Sil</h2>
+<div class="alert alert-warning">
+    <strong>Dikkat!</strong> Bu zimmeti silmek istediğinize emin misiniz?
+</div>
+<dl class="row">
+    <dt class="col-sm-3">Cihaz</dt>
+    <dd class="col-sm-9">@Model.CihazID</dd>
+    <dt class="col-sm-3">Personel</dt>
+    <dd class="col-sm-9">@Model.PersonelID</dd>
+    <dt class="col-sm-3">Zimmet Tarihi</dt>
+    <dd class="col-sm-9">@Model.ZimmetTarihi.ToShortDateString()</dd>
+    <dt class="col-sm-3">Açıklama</dt>
+    <dd class="col-sm-9">@Model.Aciklama</dd>
+</dl>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="ZimmetID" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>

@@ -1,0 +1,32 @@
+@model IEnumerable<EnvanterTakip.Models.AppUser>
+
+@{
+    ViewData["Title"] = "Kullanıcılar";
+}
+
+<h2>Kullanıcılar</h2>
+<a asp-action="Create" class="btn btn-primary mb-3">Yeni Kullanıcı Ekle</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Kullanıcı Adı</th>
+            <th>Rol</th>
+            <th>Aktif Mi?</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.KullaniciAdi</td>
+            <td>@user.Rol</td>
+            <td>@(user.AktifMi ? "Evet" : "Hayır")</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@user.AppUserID" class="btn btn-sm btn-warning">Düzenle</a>
+                <a asp-action="Delete" asp-route-id="@user.AppUserID" class="btn btn-sm btn-danger">Sil</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

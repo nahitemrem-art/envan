@@ -1,0 +1,23 @@
+@model EnvanterTakip.Models.Cihaz
+
+@{
+    ViewData["Title"] = "Cihaz Sil";
+}
+
+<h2>Cihaz Sil</h2>
+<div class="alert alert-warning">
+    <strong>Dikkat!</strong> Bu cihazı silmek istediğinize emin misiniz?
+</div>
+<dl class="row">
+    <dt class="col-sm-3">Marka</dt>
+    <dd class="col-sm-9">@Model.Marka</dd>
+    <dt class="col-sm-3">Model</dt>
+    <dd class="col-sm-9">@Model.Model</dd>
+    <dt class="col-sm-3">Seri No</dt>
+    <dd class="col-sm-9">@Model.SeriNo</dd>
+</dl>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="CihazID" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>

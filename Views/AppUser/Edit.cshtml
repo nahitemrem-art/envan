@@ -1,0 +1,31 @@
+@model EnvanterTakip.Models.AppUser
+
+@{
+    ViewData["Title"] = "Kullanıcı Düzenle";
+}
+
+<h2>Kullanıcı Düzenle</h2>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="AppUserID" />
+    <div class="mb-3">
+        <label asp-for="KullaniciAdi" class="form-label"></label>
+        <input asp-for="KullaniciAdi" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Sifre" class="form-label"></label>
+        <input asp-for="Sifre" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Rol" class="form-label">Rol</label>
+        <select asp-for="Rol" class="form-control">
+            <option value="Admin">Admin</option>
+            <option value="User">User</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="AktifMi" class="form-label">Aktif mi?</label>
+        <input asp-for="AktifMi" type="checkbox" class="form-check-input" />
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>

@@ -1,0 +1,39 @@
+@model IEnumerable<EnvanterTakip.Models.Personel>
+
+<h2>Personel Listesi</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Personel Ekle</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Birim</th>
+                <th>E-posta</th>
+                <th>Telefon</th>
+                <th>Durum</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Ad</td>
+                    <td>@item.Soyad</td>
+                    <td>@item.BirimAdi</td>
+                    <td>@item.Email</td>
+                    <td>@item.Telefon</td>
+                    <td>@(item.AktifMi ? "Aktif" : "Pasif")</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.PersonelID" class="btn btn-sm btn-warning">Düzenle</a>
+                        <a asp-action="Delete" asp-route-id="@item.PersonelID" class="btn btn-sm btn-danger">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

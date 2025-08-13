@@ -1,0 +1,21 @@
+@model EnvanterTakip.Models.AppUser
+
+@{
+    ViewData["Title"] = "Kullanıcı Sil";
+}
+
+<h2>Kullanıcı Sil</h2>
+<div class="alert alert-warning">
+    <strong>Dikkat!</strong> Bu kullanıcıyı silmek istediğinize emin misiniz?
+</div>
+<dl class="row">
+    <dt class="col-sm-3">Kullanıcı Adı</dt>
+    <dd class="col-sm-9">@Model.KullaniciAdi</dd>
+    <dt class="col-sm-3">Rol</dt>
+    <dd class="col-sm-9">@Model.Rol</dd>
+</dl>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="AppUserID" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>

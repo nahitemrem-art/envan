@@ -1,0 +1,71 @@
+@model IEnumerable<EnvanterTakip.Models.Zimmet>
+
+@{
+    ViewData["Title"] = "Zimmet Listesi";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Yeni Zimmet Ekle</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Cihaz Bilgisi</th>
+                <th>Personel</th>
+                <th>Zimmet Tarihi</th>
+                <th>İade Tarihi</th>
+                <th>Açıklama</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (item.Cihaz != null)
+                        {
+                            <span>@item.Cihaz.Marka @item.Cihaz.Model</span>
+                            <small class="text-muted d-block">SN: @item.Cihaz.SeriNo</small>
+                        }
+                        else
+                        {
+                            <span class="text-danger">Cihaz silinmiş</span>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Personel != null)
+                        {
+                            <span>@item.Personel.Ad @item.Personel.Soyad</span>
+                            <small class="text-muted d-block">@item.Personel.BirimAdi</small>
+                        }
+                        else
+                        {
+                            <span class="text-danger">Personel silinmiş</span>
+                        }
+                    </td>
+                    <td>@item.ZimmetTarihi.ToShortDateString()</td>
+                    <td>
+                        @if (item.IadeTarihi.HasValue)
+                        {
+                            @item.IadeTarihi.Value.ToShortDateString()
+                        }
+                        else
+                        {
+                            <span class="badge bg-info">Aktif Zimmet</span>
+                        }
+                    </td>
+                    <td>@item.Aciklama</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ZimmetID" class="btn btn-sm btn-warning">Düzenle</a>
+                        <a asp-action="Delete" asp-route-id="@item.ZimmetID" class="btn btn-sm btn-danger">İade Et</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
