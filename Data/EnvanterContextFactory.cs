@@ -2,13 +2,14 @@
 using EnvanterTakip.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 public class EnvanterContextFactory : IDesignTimeDbContextFactory<EnvanterContext>
 {
     public EnvanterContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<EnvanterContext>();
-        optionsBuilder.UseSqlServer("Server=DESKTOP-RH7A4R0\\SQLEXPRESS;Database=EnvanterTakip;User Id=sa;Password=Admin123;TrustServerCertificate=True;");
+        optionsBuilder.optionsBuilder.UseNpgsql("postgresql://envanterdb_user:XqwzlDcZklWMQPsb01FBhnTqQllghjxN@dpg-d2e7hoc9c44c73egrho0-a/envanterdb");
         return new EnvanterContext(optionsBuilder.Options);
     }
 }
