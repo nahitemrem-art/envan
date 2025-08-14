@@ -6,15 +6,26 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<EnvanterContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("EnvanterConnection")));
+// Environment variables'dan connection string oluştur
+var host = Environment.GetEnvironmentVariable("DB_HOST");
+var port = Environment.GetEnvironmentVariable("DB_PORT");
+var database = Environment.GetEnvironmentVariable("DB_NAME");
+var username = Environment.GetEnvironmentVariable("DB_USER");
+var password = Environment.GetEnvironmentVariable("DB_PASSWORD");
 
-builder.Services.AddAuthentication("Cookies")
-    .AddCookie("Cookies", options =>
-    {
-        options.LoginPath = "/Account/Login"; // Giriş sayfanızın yolu
-        options.AccessDeniedPath = "/Account/AccessDenied";
-    });
+// Eğer environment variables yoksa fallback olarak appsettings kullan
+string connectionString;
+if (!string.IsNullOrEmpty(host))
+{
+    connectionString = $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Timeout=30;Command Timeout=60;Pooling=true";
+}
+else
+{
+    connectionString = builder.Configuration.GetConnectionString("EnvanterConnection");
+}
+
+builder.Services.AddDbContext<EnvanterContext>(options =>
+    options.UseNpgsql(connectionString));
 
 var app = builder.Build();
 
@@ -24,8 +35,6 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
-
-// Migration satırı YOK
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
