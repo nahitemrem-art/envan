@@ -18,12 +18,18 @@ builder.Services.AddAuthentication("Cookies")
 
 var app = builder.Build();
 
-// Middleware konfigürasyonu...
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
+
+// Migration satırı YOK
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseAuthentication(); // Authorization'dan önce ekleyin
 app.UseAuthorization();
 
 app.MapControllerRoute(
