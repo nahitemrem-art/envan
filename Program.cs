@@ -3,9 +3,21 @@ using EnvanterTakip.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Eğer Render.com'da DATABASE_URL environment variable olarak tanımlıysa:
-var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
+// Connection string'i parse et
+var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL") 
     ?? builder.Configuration.GetConnectionString("DefaultConnection");
+
+string connectionString;
+if (!string.IsNullOrEmpty(databaseUrl) && databaseUrl.StartsWith("postgresql://"))
+{
+    // PostgreSQL URL'ini Npgsql formatına çevir
+    var uri = new Uri(databaseUrl);
+    connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.Trim('/')};Username={uri.UserInfo.Split(':')[0]};Password={uri.UserInfo.Split(':')[1]};SSL Mode=Require;Trust Server Certificate=true";
+}
+else
+{
+    connectionString = databaseUrl ?? builder.Configuration.GetConnectionString("DefaultConnection");
+}
 
 builder.Services.AddDbContext<EnvanterContext>(options =>
     options.UseNpgsql(connectionString));
@@ -31,8 +43,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
-app.UseAuthentication(); // <-- Bunu ekle
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
