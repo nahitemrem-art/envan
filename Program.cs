@@ -4,7 +4,9 @@ using EnvanterTakip.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Eğer Render.com'da DATABASE_URL environment variable olarak tanımlıysa:
-var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
+    ?? builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<EnvanterContext>(options =>
     options.UseNpgsql(connectionString));
 
