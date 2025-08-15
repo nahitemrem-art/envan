@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using EnvanterTakip.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Environment Variable'dan oku
@@ -5,7 +8,7 @@ var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
 
 // PostgreSQL bağlan
 builder.Services.AddDbContext<EnvanterContext>(options =>
-    options.UseNpgsql(connectionString));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllersWithViews();
 
