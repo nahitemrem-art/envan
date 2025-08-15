@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<EnvanterContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("EnvanterConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAuthentication("Cookies")
     .AddCookie("Cookies", options =>
