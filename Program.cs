@@ -5,10 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Environment Variable'dan oku
 var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
-
-// PostgreSQL bağlan
 builder.Services.AddDbContext<EnvanterContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddControllersWithViews();
 
