@@ -1,31 +1,21 @@
-using Microsoft.EntityFrameworkCore;
-using EnvanterTakip.Data;
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+// Environment Variable'dan oku
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL");
 
+// PostgreSQL bağlan
 builder.Services.AddDbContext<EnvanterContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DATABASE_URL")));
+    options.UseNpgsql(connectionString));
 
-builder.Services.AddAuthentication("Cookies")
-    .AddCookie("Cookies", options =>
-    {
-        options.LoginPath = "/Account/Login"; // Giriş sayfanızın yolu
-        options.AccessDeniedPath = "/Account/AccessDenied";
-    });
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
-
-// Migration satırı YOK
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
