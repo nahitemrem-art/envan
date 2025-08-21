@@ -16,13 +16,29 @@ namespace EnvanterTakip.Controllers
             _context = context;
         }
 
-                public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var zimmetler = await _context.Zimmetler
+            ViewData["CurrentFilter"] = searchString;
+
+            var zimmetlerQuery = _context.Zimmetler
                 .Include(z => z.Cihaz)
-                .Include(z => z.Personel) // Değiştirildi
-                .OrderByDescending(z => z.ZimmetTarihi)
-                .ToListAsync();
+                .Include(z => z.Personel)
+                .AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var searchStringLower = searchString.ToLower();
+                zimmetlerQuery = zimmetlerQuery.Where(z =>
+                    (z.Cihaz != null && (z.Cihaz.Marka.ToLower().Contains(searchStringLower) ||
+                                        z.Cihaz.Model.ToLower().Contains(searchStringLower) ||
+                                        z.Cihaz.SeriNo.ToLower().Contains(searchStringLower))) ||
+                    (z.Personel != null && (z.Personel.Ad.ToLower().Contains(searchStringLower) ||
+                                           z.Personel.Soyad.ToLower().Contains(searchStringLower) ||
+                                           z.Personel.BirimAdi.ToLower().Contains(searchStringLower))) ||
+                    z.Aciklama.ToLower().Contains(searchStringLower));
+            }
+
+            var zimmetler = await zimmetlerQuery.OrderByDescending(z => z.ZimmetTarihi).ToListAsync();
             return View(zimmetler);
         }
 
