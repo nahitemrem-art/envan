@@ -3,11 +3,11 @@ using EnvanterTakip.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<EnvanterContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("EnvanterConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAuthentication("Cookies")
     .AddCookie("Cookies", options =>
@@ -18,18 +18,20 @@ builder.Services.AddAuthentication("Cookies")
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
 
-// Migration satırı YOK
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseRouting();
+
+// Authentication önce, Authorization sonra
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

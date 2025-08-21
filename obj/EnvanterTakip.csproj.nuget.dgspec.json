@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Desktop\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj": {}
+    "D:\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Desktop\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj": {
+    "D:\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Desktop\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj",
+        "projectUniqueName": "D:\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj",
         "projectName": "EnvanterTakip",
-        "projectPath": "C:\\Users\\admin\\Desktop\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj",
+        "projectPath": "D:\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Desktop\\myapp\\c#\\envan\\EnvanterTakip\\obj\\",
+        "outputPath": "D:\\myapp\\c#\\envan\\EnvanterTakip\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -66,24 +66,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.19, 8.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.19, 8.0.19]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.19, 8.0.19]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.19, 8.0.19]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

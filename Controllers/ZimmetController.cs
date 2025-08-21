@@ -16,82 +16,66 @@ namespace EnvanterTakip.Controllers
             _context = context;
         }
 
-                public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var zimmetler = await _context.Zimmetler
+            ViewData["CurrentFilter"] = searchString;
+
+            var zimmetlerQuery = _context.Zimmetler
                 .Include(z => z.Cihaz)
-                .Include(z => z.Personel) // Değiştirildi
-                .OrderByDescending(z => z.ZimmetTarihi)
-                .ToListAsync();
+                .Include(z => z.Personel)
+                .AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var searchStringLower = searchString.ToLower();
+                zimmetlerQuery = zimmetlerQuery.Where(z =>
+                    (z.Cihaz != null && (z.Cihaz.Marka.ToLower().Contains(searchStringLower) ||
+                                        z.Cihaz.Model.ToLower().Contains(searchStringLower) ||
+                                        z.Cihaz.SeriNo.ToLower().Contains(searchStringLower))) ||
+                    (z.Personel != null && (z.Personel.Ad.ToLower().Contains(searchStringLower) ||
+                                           z.Personel.Soyad.ToLower().Contains(searchStringLower) ||
+                                           z.Personel.BirimAdi.ToLower().Contains(searchStringLower))) ||
+                    z.Aciklama.ToLower().Contains(searchStringLower));
+            }
+
+            var zimmetler = await zimmetlerQuery.OrderByDescending(z => z.ZimmetTarihi).ToListAsync();
             return View(zimmetler);
         }
 
         
 
+        // GET: Zimmet/Create
         public async Task<IActionResult> Create()
         {
-            var zimmetliCihazIdler = await _context.Zimmetler.Select(z => z.CihazID).ToListAsync();
-            ViewBag.Cihazlar = await _context.Cihazlar
-                .Where(c => !zimmetliCihazIdler.Contains(c.CihazID))
-                .Select(c => new { c.CihazID, MarkaModelSeriNo = $"{c.Marka} {c.Model} (SN:{c.SeriNo})" })
-                .ToListAsync();
-
+            ViewBag.Cihazlar = await _context.Cihazlar.ToListAsync();
             ViewBag.Personeller = await _context.Personeller
-                .Select(p => new { p.PersonelID, DisplayText = $"{p.Ad} {p.Soyad} - {p.BirimAdi}" })
+                .Select(p => new { p.PersonelID, DisplayText = p.Ad + " " + p.Soyad })
                 .ToListAsync();
-
             return View();
         }
 
+        // POST: Zimmet/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Zimmet zimmet) // Bind attribute kaldırıldı
+        public async Task<IActionResult> Create(Zimmet zimmet)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    // Otomatik tarih ataması
-                    zimmet.ZimmetTarihi = zimmet.ZimmetTarihi == default ? DateTime.Now : zimmet.ZimmetTarihi;
-                    
-                    // Cihaz durum güncelleme
-                    var cihaz = await _context.Cihazlar.FindAsync(zimmet.CihazID);
-                    if (cihaz == null)
-                    {
-                        ModelState.AddModelError("CihazID", "Seçilen cihaz bulunamadı");
-                        return await ReloadCreateView(zimmet);
-                    }
-                    
-                    cihaz.Durum = "Zimmetli";
-                    _context.Update(cihaz);
-                    
-                    _context.Add(zimmet);
-                    await _context.SaveChangesAsync();
-                    
-                    TempData["SuccessMessage"] = "Zimmet işlemi başarıyla oluşturuldu";
-                    return RedirectToAction(nameof(Index));
-                }
-            }
-            catch (DbUpdateException ex)
-            {
-                ModelState.AddModelError("", "Kayıt sırasında bir hata oluştu: " + ex.Message);
-            }
-            
-            return await ReloadCreateView(zimmet);
-        }
+                zimmet.ZimmetTarihi = DateTime.SpecifyKind(zimmet.ZimmetTarihi, DateTimeKind.Utc);
+                if (zimmet.IadeTarihi != null)
+                    zimmet.IadeTarihi = DateTime.SpecifyKind(zimmet.IadeTarihi.Value, DateTimeKind.Utc);
 
-private async Task<IActionResult> ReloadCreateView(Zimmet zimmet)
-{
-    ViewBag.Cihazlar = await _context.Cihazlar
-        .Where(c => c.Durum == "Depoda")
-        .ToListAsync();
-        
-    ViewBag.Personeller = await _context.Personeller
-        .Where(p => p.AktifMi)
-        .ToListAsync();
-        
-    return View(zimmet);
-}
+                _context.Add(zimmet);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            // ModelState geçersizse ViewBag'leri tekrar doldur
+            ViewBag.Cihazlar = await _context.Cihazlar.ToListAsync();
+            ViewBag.Personeller = await _context.Personeller
+                .Select(p => new { p.PersonelID, DisplayText = p.Ad + " " + p.Soyad })
+                .ToListAsync();
+            return View(zimmet);
+        }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
@@ -116,12 +100,14 @@ private async Task<IActionResult> ReloadCreateView(Zimmet zimmet)
         public async Task<IActionResult> Edit(int id, Zimmet zimmet)
         {
             if (id != zimmet.ZimmetID)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
+                zimmet.ZimmetTarihi = DateTime.SpecifyKind(zimmet.ZimmetTarihi, DateTimeKind.Utc);
+                if (zimmet.IadeTarihi != null)
+                    zimmet.IadeTarihi = DateTime.SpecifyKind(zimmet.IadeTarihi.Value, DateTimeKind.Utc);
+
                 _context.Update(zimmet);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

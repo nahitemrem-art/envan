@@ -9,18 +9,23 @@
 <form asp-action="Create">
     <div class="form-group">
         <label asp-for="CihazID" class="control-label">Cihaz</label>
-        <select asp-for="CihazID" class="form-control" asp-items="@(new SelectList(ViewBag.Cihazlar, "CihazID", "MarkaModelSeriNo"))">
-            <option value="">-- Cihaz Seçin --</option>
-        </select>
+        @if (ViewBag.Cihazlar != null)
+        {
+            @Html.DropDownListFor(model => model.CihazID, 
+                new SelectList(ViewBag.Cihazlar, "CihazID", "MarkaModelSeriNo"), 
+                "-- Cihaz Seçin --", new { @class = "form-control" })
+        }
         <span asp-validation-for="CihazID" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="PersonelID" class="control-label">Personel</label>
-        <select asp-for="PersonelID" class="form-control" 
-            asp-items="@(new SelectList(ViewBag.Personeller, "PersonelID", "DisplayText"))">
-        <option value="">-- Personel Seçin --</option>
-    </select>
+        @if (ViewBag.Personeller != null)
+        {
+            @Html.DropDownListFor(model => model.PersonelID, 
+                new SelectList(ViewBag.Personeller, "PersonelID", "DisplayText"), 
+                "-- Personel Seçin --", new { @class = "form-control" })
+        }
         <span asp-validation-for="PersonelID" class="text-danger"></span>
     </div>
 

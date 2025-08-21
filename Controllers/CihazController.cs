@@ -17,9 +17,36 @@ namespace EnvanterTakip.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Cihazlar.ToListAsync()); // List<Cihaz> dönüyor
+            ViewData["CurrentFilter"] = searchString;
+
+            var cihazlarQuery = _context.Cihazlar.Include(c => c.Zimmetler).AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                var searchStringLower = searchString.ToLower();
+                cihazlarQuery = cihazlarQuery.Where(c =>
+                    c.CihazTuru.ToLower().Contains(searchStringLower) ||
+                    c.Marka.ToLower().Contains(searchStringLower) ||
+                    c.Model.ToLower().Contains(searchStringLower) ||
+                    c.SeriNo.ToLower().Contains(searchStringLower) ||
+                    c.Durum.ToLower().Contains(searchStringLower));
+            }
+
+            var cihazlar = await cihazlarQuery.ToListAsync();
+
+            // Her cihazın Durumunu güncelle
+            foreach (var cihaz in cihazlar)
+            {
+                // Eğer cihazın en az bir aktif zimmeti varsa (ör: IadeTarihi null ise)
+                if (cihaz.Zimmetler != null && cihaz.Zimmetler.Any(z => z.IadeTarihi == null))
+                    cihaz.Durum = "Zimmetli";
+                else
+                    cihaz.Durum = "Depoda";
+            }
+
+            return View(cihazlar);
         }
         // Controllers/CihazController.cs
         public IActionResult Create()

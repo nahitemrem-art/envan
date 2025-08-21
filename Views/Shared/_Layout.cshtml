@@ -3,11 +3,19 @@
 <head>
     <!-- Diğer head içeriği -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- ...existing code... -->
-</head>
-<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-@RenderSection("Scripts", required: false)
+    <style>
+        @@media (max-width: 576px) {
+            .table-responsive {
+                font-size: 12px;
+            }
+            .table th, .table td {
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
 
 <body>
     <header>
@@ -19,8 +27,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        
-                        <li class="nav-item"></li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Admin" asp-action="Index">Admin Panel</a>
                         </li>
                         <li class="nav-item">
@@ -53,5 +60,6 @@
     <!-- Diğer footer ve scriptler -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+     @RenderSection("Scripts", required: false)
 </body>
 </html>
