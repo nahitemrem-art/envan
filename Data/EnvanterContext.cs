@@ -14,5 +14,7 @@ namespace EnvanterTakip.Data
         public DbSet<Zimmet> Zimmetler { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Personel> Personeller { get; set; }
+        public DbSet<Kategori> Kategoriler { get; set; }
+        public DbSet<Konum> Konumlar { get; set; }
     }
 }

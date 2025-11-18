@@ -17,109 +17,151 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EnvanterTakip
 build_property.RootNamespace = EnvanterTakip
-build_property.ProjectDir = D:\myapp\c#\envan\EnvanterTakip\
+build_property.ProjectDir = /home/engine/project/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\myapp\c#\envan\EnvanterTakip
+build_property.MSBuildProjectDirectory = /home/engine/project
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 8.0
-build_property.EnableCodeStyleSeverity = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+[/home/engine/project/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Admin/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+[/home/engine/project/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/AppUser/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxDcmVhdGUuY3NodG1s
+[/home/engine/project/Views/AppUser/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXBwVXNlci9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/AppUser/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxEZWxldGUuY3NodG1s
+[/home/engine/project/Views/AppUser/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXBwVXNlci9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/AppUser/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxFZGl0LmNzaHRtbA==
+[/home/engine/project/Views/AppUser/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXBwVXNlci9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/AppUser/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwVXNlclxJbmRleC5jc2h0bWw=
+[/home/engine/project/Views/AppUser/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXBwVXNlci9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Cihaz/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2loYXpcQ3JlYXRlLmNzaHRtbA==
+[/home/engine/project/Views/Cihaz/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2loYXovQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Cihaz/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2loYXpcRGVsZXRlLmNzaHRtbA==
+[/home/engine/project/Views/Cihaz/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2loYXovRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Cihaz/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2loYXpcRWRpdC5jc2h0bWw=
+[/home/engine/project/Views/Cihaz/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2loYXovRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Cihaz/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2loYXpcSW5kZXguY3NodG1s
+[/home/engine/project/Views/Cihaz/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2loYXovSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[/home/engine/project/Views/Harita/Detay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSGFyaXRhL0RldGF5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[/home/engine/project/Views/Harita/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSGFyaXRhL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Personel/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uZWxcQ3JlYXRlLmNzaHRtbA==
+[/home/engine/project/Views/Harita/Kent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSGFyaXRhL0tlbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Personel/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uZWxcRWRpdC5jc2h0bWw=
+[/home/engine/project/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Personel/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyc29uZWxcSW5kZXguY3NodG1s
+[/home/engine/project/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[/home/engine/project/Views/Kategori/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS2F0ZWdvcmkvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/home/engine/project/Views/Kategori/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS2F0ZWdvcmkvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Zimmet/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWmltbWV0XENyZWF0ZS5jc2h0bWw=
+[/home/engine/project/Views/Kategori/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS2F0ZWdvcmkvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Zimmet/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWmltbWV0XERlbGV0ZS5jc2h0bWw=
+[/home/engine/project/Views/Kategori/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS2F0ZWdvcmkvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Zimmet/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWmltbWV0XEVkaXQuY3NodG1s
+[/home/engine/project/Views/Konum/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS29udW0vQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Zimmet/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWmltbWV0XEluZGV4LmNzaHRtbA==
+[/home/engine/project/Views/Konum/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS29udW0vRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/home/engine/project/Views/Konum/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS29udW0vRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/home/engine/project/Views/Konum/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS29udW0vSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/myapp/c\#/envan/EnvanterTakip/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-sncg3p2kaq
+[/home/engine/project/Views/Personel/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyc29uZWwvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/Personel/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyc29uZWwvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/Personel/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGVyc29uZWwvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/Zimmet/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWmltbWV0L0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/Zimmet/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWmltbWV0L0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/Zimmet/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWmltbWV0L0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/Zimmet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWmltbWV0L0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-bpekw9qocs

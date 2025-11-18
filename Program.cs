@@ -50,4 +50,19 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<EnvanterContext>();
+    try
+    {
+        context.Database.Migrate();
+        await DbSeeder.SeedData(context);
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Veritabanı migration veya seed işlemi sırasında hata oluştu");
+    }
+}
+
 app.Run();
