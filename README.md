@@ -21,17 +21,23 @@ ASP.NET Core 8 MVC uygulaması - Envanter Takip Sistemi ve Sakarya Kent Rehberi
 
 ### Gereksinimler
 - .NET 8.0 SDK
-- PostgreSQL
+- Docker (PostgreSQL için) veya PostgreSQL 12+
 
-### Veritabanı Kurulumu
+### Hızlı Başlangıç
 
-1. PostgreSQL bağlantı bilgilerini `appsettings.json` dosyasında güncelleyin veya `DATABASE_URL` environment variable'ını ayarlayın.
+**Detaylı kurulum talimatları için [SETUP.md](SETUP.md) dosyasına bakın.**
 
-2. Uygulamayı çalıştırdığınızda migration'lar otomatik olarak uygulanacak ve örnek veriler yüklenecektir.
+1. PostgreSQL'i Docker ile başlatın:
+```bash
+docker run -d --name postgres-dev -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=envanterdb -p 5432:5432 postgres:15-alpine
+```
 
+2. Uygulamayı çalıştırın:
 ```bash
 dotnet run
 ```
+
+Uygulama otomatik olarak migration'ları uygular ve örnek verileri yükler.
 
 ## Kullanım
 
