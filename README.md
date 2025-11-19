@@ -23,21 +23,34 @@ ASP.NET Core 8 MVC uygulaması - Envanter Takip Sistemi ve Sakarya Kent Rehberi
 - .NET 8.0 SDK
 - Docker (MySQL için) veya MySQL 8.0+
 
-### Hızlı Başlangıç
+### ⚡ Hızlı Başlangıç
 
-**Detaylı kurulum talimatları için [SETUP.md](SETUP.md) dosyasına bakın.**
+**En kolay yol:**
 
-1. MySQL'i Docker ile başlatın:
 ```bash
-docker run -d --name mysql-dev -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=envanterdb -p 3306:3306 mysql:8.0
+./start.sh
 ```
 
-2. Uygulamayı çalıştırın:
+**Manuel başlangıç:**
+
 ```bash
+# 1. MySQL başlat
+docker run -d --name mysql-dev -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=envanterdb -p 3306:3306 mysql:8.0
+
+# 2. 20 saniye bekle (MySQL hazır olsun)
+sleep 20
+
+# 3. Uygulamayı başlat
 dotnet run
 ```
 
 Uygulama otomatik olarak migration'ları uygular ve örnek verileri yükler.
+
+**📚 Dokümantasyon:**
+- [QUICK_START.md](QUICK_START.md) - 5 dakikada başlangıç 🚀
+- [SETUP.md](SETUP.md) - Detaylı kurulum 📖
+- [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - Sorun giderme 🔧
+- [MYSQL_MIGRATION.md](MYSQL_MIGRATION.md) - PostgreSQL'den geçiş rehberi 🔄
 
 ## Kullanım
 
