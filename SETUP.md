@@ -3,28 +3,27 @@
 ## Gereksinimler
 
 - .NET 8.0 SDK
-- Docker (PostgreSQL için)
-- veya PostgreSQL 12+ (direkt kurulum)
+- Docker (MySQL için)
+- veya MySQL 8.0+ (direkt kurulum)
 
 ## Hızlı Başlangıç
 
-### 1. PostgreSQL Veritabanını Başlat
+### 1. MySQL Veritabanını Başlat
 
 #### Docker ile (Önerilen):
 
 ```bash
 docker run -d \
-  --name postgres-dev \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_DB=envanterdb \
-  -p 5432:5432 \
-  postgres:15-alpine
+  --name mysql-dev \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=envanterdb \
+  -p 3306:3306 \
+  mysql:8.0
 ```
 
-#### Manuel PostgreSQL Kurulumu:
+#### Manuel MySQL Kurulumu:
 
-PostgreSQL'i sisteminize kurun ve bir veritabanı oluşturun:
+MySQL'i sisteminize kurun ve bir veritabanı oluşturun:
 
 ```sql
 CREATE DATABASE envanterdb;
@@ -37,7 +36,7 @@ CREATE DATABASE envanterdb;
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Host=localhost;Port=5432;Database=envanterdb;Username=postgres;Password=postgres"
+    "DefaultConnection": "Server=localhost;Port=3306;Database=envanterdb;User=root;Password=root;"
   }
 }
 ```
@@ -45,7 +44,7 @@ CREATE DATABASE envanterdb;
 **Veya** environment variable kullanın:
 
 ```bash
-export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/envanterdb"
+export DATABASE_URL="mysql://root:root@localhost:3306/envanterdb"
 ```
 
 ### 3. Uygulamayı Çalıştır
@@ -134,18 +133,17 @@ CREATE DATABASE envanterdb;
 Uygulamanın kendisini de Docker'da çalıştırmak için:
 
 ```bash
-# PostgreSQL başlat
-docker run -d --name postgres-dev \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_DB=envanterdb \
-  postgres:15-alpine
+# MySQL başlat
+docker run -d --name mysql-dev \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=envanterdb \
+  mysql:8.0
 
 # Uygulamayı derle ve çalıştır
 docker build -t sakarya-rehber .
 docker run -d -p 8080:80 \
-  --link postgres-dev \
-  -e DATABASE_URL="postgresql://postgres:postgres@postgres-dev:5432/envanterdb" \
+  --link mysql-dev \
+  -e DATABASE_URL="mysql://root:root@mysql-dev:3306/envanterdb" \
   sakarya-rehber
 ```
 
@@ -155,14 +153,14 @@ Tarayıcıda: http://localhost:8080
 
 ### "No such host is known" Hatası
 
-PostgreSQL sunucusuna erişilemiyor. Kontrol edin:
+MySQL sunucusuna erişilemiyor. Kontrol edin:
 
 ```bash
-# PostgreSQL container çalışıyor mu?
-docker ps | grep postgres
+# MySQL container çalışıyor mu?
+docker ps | grep mysql
 
 # Port dinleniyor mu?
-netstat -an | grep 5432
+netstat -an | grep 3306
 ```
 
 ### Migration Hataları
@@ -170,24 +168,23 @@ netstat -an | grep 5432
 Veritabanını sıfırlayın ve tekrar deneyin:
 
 ```bash
-docker restart postgres-dev
+docker restart mysql-dev
 dotnet run
 ```
 
 ### Port Çakışması
 
-Eğer 5432 portu kullanılıyorsa, farklı bir port kullanın:
+Eğer 3306 portu kullanılıyorsa, farklı bir port kullanın:
 
 ```bash
-docker run -d --name postgres-dev \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_DB=envanterdb \
-  -p 5433:5432 \
-  postgres:15-alpine
+docker run -d --name mysql-dev \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=envanterdb \
+  -p 3307:3306 \
+  mysql:8.0
 ```
 
-Ve `appsettings.json`'da port'u güncelleyin: `Port=5433`
+Ve `appsettings.json`'da port'u güncelleyin: `Port=3307`
 
 ## Üretim Ortamına Dağıtım
 
@@ -203,7 +200,7 @@ Ve `appsettings.json`'da port'u güncelleyin: `Port=5433`
 Örnek üretim connection string:
 
 ```
-Host=production-host.com;Port=5432;Database=envanterdb;Username=user;Password=secure_pass;SSL Mode=Require;Trust Server Certificate=false
+Server=production-host.com;Port=3306;Database=envanterdb;User=user;Password=secure_pass;SslMode=Required;
 ```
 
 ## Daha Fazla Bilgi

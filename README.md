@@ -21,15 +21,15 @@ ASP.NET Core 8 MVC uygulaması - Envanter Takip Sistemi ve Sakarya Kent Rehberi
 
 ### Gereksinimler
 - .NET 8.0 SDK
-- Docker (PostgreSQL için) veya PostgreSQL 12+
+- Docker (MySQL için) veya MySQL 8.0+
 
 ### Hızlı Başlangıç
 
 **Detaylı kurulum talimatları için [SETUP.md](SETUP.md) dosyasına bakın.**
 
-1. PostgreSQL'i Docker ile başlatın:
+1. MySQL'i Docker ile başlatın:
 ```bash
-docker run -d --name postgres-dev -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=envanterdb -p 5432:5432 postgres:15-alpine
+docker run -d --name mysql-dev -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=envanterdb -p 3306:3306 mysql:8.0
 ```
 
 2. Uygulamayı çalıştırın:
@@ -69,7 +69,7 @@ Uygulama otomatik olarak migration'ları uygular ve örnek verileri yükler.
 
 - ASP.NET Core 8 MVC
 - Entity Framework Core
-- PostgreSQL (Npgsql)
+- MySQL (Pomelo.EntityFrameworkCore.MySql)
 - Bootstrap 5
 - Leaflet.js (OpenStreetMap)
 - Bootstrap Icons
@@ -102,7 +102,7 @@ Uygulama otomatik olarak migration'ları uygular ve örnek verileri yükler.
 
 ```bash
 docker build -t sakarya-rehber .
-docker run -p 8080:80 -e DATABASE_URL="postgresql://..." sakarya-rehber
+docker run -p 8080:80 -e DATABASE_URL="mysql://root:root@mysql-dev:3306/envanterdb" sakarya-rehber
 ```
 
 ## Lisans

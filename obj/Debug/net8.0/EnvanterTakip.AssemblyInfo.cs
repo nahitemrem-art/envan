@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EnvanterTakip")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+370ac8cf5c1f9c80170d7fc7b1b3c02f5e65b8a1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8bf2d640dd6f267663aa40aef5a000d438787671")]
 [assembly: System.Reflection.AssemblyProductAttribute("EnvanterTakip")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EnvanterTakip")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
