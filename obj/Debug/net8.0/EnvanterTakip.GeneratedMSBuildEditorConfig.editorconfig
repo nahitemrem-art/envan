@@ -130,6 +130,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/engine/project/Views/Turizm/Detay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVHVyaXptL0RldGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/engine/project/Views/Turizm/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVHVyaXptL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/engine/project/Views/Zimmet/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvWmltbWV0L0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

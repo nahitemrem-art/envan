@@ -23,7 +23,11 @@ namespace EnvanterTakip.Data
                 new Kategori { Ad = "Restoran", Aciklama = "Restoranlar ve kafeler", Ikon = "bi-cup-hot", Renk = "#ffc107" },
                 new Kategori { Ad = "Otopark", Aciklama = "Otopark alanları", Ikon = "bi-p-square", Renk = "#6610f2" },
                 new Kategori { Ad = "Kültür Merkezi", Aciklama = "Kültür ve sanat merkezleri", Ikon = "bi-book", Renk = "#d63384" },
-                new Kategori { Ad = "Spor Tesisi", Aciklama = "Spor salonları ve tesisleri", Ikon = "bi-trophy", Renk = "#0dcaf0" }
+                new Kategori { Ad = "Spor Tesisi", Aciklama = "Spor salonları ve tesisleri", Ikon = "bi-trophy", Renk = "#0dcaf0" },
+                new Kategori { Ad = "Müze", Aciklama = "Müzeler ve sergi alanları", Ikon = "bi-bank", Renk = "#8b4513" },
+                new Kategori { Ad = "Tarihi Mekan", Aciklama = "Tarihi yapılar ve anıtlar", Ikon = "bi-building", Renk = "#8b0000" },
+                new Kategori { Ad = "Doğal Alan", Aciklama = "Doğal güzellikler ve mesire alanları", Ikon = "bi-tree", Renk = "#228b22" },
+                new Kategori { Ad = "Mesire Alanı", Aciklama = "Piknik ve dinlenme alanları", Ikon = "bi-flower1", Renk = "#32cd32" }
             };
 
             context.Kategoriler.AddRange(kategoriler);

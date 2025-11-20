@@ -1,6 +1,71 @@
 @{
     ViewData["Title"] = "Admin Panel";
 }
-<h2>Admin Panel</h2>
-<p>Hoş geldiniz, admin!</p>
-<a href="/AppUser/Index" class="btn btn-outline-primary">Kullanıcı Yönetimi</a>
+
+<h2>⚙️ Admin Panel</h2>
+<p class="lead">Sakarya Rehberi Yönetim Paneli</p>
+
+<div class="row mt-4">
+    <div class="col-md-4 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="bi bi-pin-map" style="font-size: 3rem; color: #0d6efd;"></i>
+                <h5 class="card-title mt-3">Konumlar</h5>
+                <p class="card-text">Kent ve turizm konumlarını yönetin</p>
+                <a asp-controller="Konum" asp-action="Index" class="btn btn-primary">Yönet</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="bi bi-tags" style="font-size: 3rem; color: #198754;"></i>
+                <h5 class="card-title mt-3">Kategoriler</h5>
+                <p class="card-text">Konum kategorilerini yönetin</p>
+                <a asp-controller="Kategori" asp-action="Index" class="btn btn-success">Yönet</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="bi bi-people" style="font-size: 3rem; color: #ffc107;"></i>
+                <h5 class="card-title mt-3">Kullanıcılar</h5>
+                <p class="card-text">Sistem kullanıcılarını yönetin</p>
+                <a href="/AppUser/Index" class="btn btn-warning">Yönet</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>🏙️ Kent Rehberi</h5>
+            </div>
+            <div class="card-body">
+                <p>Hastaneler, bankalar, resmi kurumlar, okullar ve diğer kent konumlarını görüntüleyin ve yönetin.</p>
+                <a asp-controller="Harita" asp-action="Index" class="btn btn-outline-primary">Kent Rehberine Git</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>🏖️ Turizm Rehberi</h5>
+            </div>
+            <div class="card-body">
+                <p>Müzeler, parklar, tarihi mekanlar ve diğer turistik noktaları görüntüleyin ve yönetin.</p>
+                <a asp-controller="Turizm" asp-action="Index" class="btn btn-outline-success">Turizm Rehberine Git</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+}

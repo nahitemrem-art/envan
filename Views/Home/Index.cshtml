@@ -3,42 +3,90 @@
 }
 
 <div class="jumbotron text-center bg-light p-5 rounded">
-    <h1 class="display-4">Sakarya Kent Rehberi'ne Hoş Geldiniz</h1>
-    <p class="lead">Şehrimizdeki tüm önemli konumları keşfedin ve harita üzerinde görüntüleyin.</p>
+    <h1 class="display-4">🗺️ Sakarya Rehberi'ne Hoş Geldiniz</h1>
+    <p class="lead">Şehrimizdeki tüm önemli konumları ve turistik mekanları keşfedin</p>
     <hr class="my-4">
-    <p>Hastaneler, bankalar, resmi kurumlar, parklar ve daha fazlası...</p>
-    <a class="btn btn-primary btn-lg" asp-controller="Harita" asp-action="Index" role="button">Haritayı Görüntüle</a>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <a class="btn btn-secondary btn-lg" asp-controller="Konum" asp-action="Create" role="button">Yeni Konum Ekle</a>
-    }
+    <p>Kent rehberi ve turizm rehberiyle Sakarya'yı daha yakından tanıyın!</p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a class="btn btn-primary btn-lg" asp-controller="Harita" asp-action="Index" role="button">
+            🏙️ Kent Rehberi
+        </a>
+        <a class="btn btn-success btn-lg" asp-controller="Turizm" asp-action="Index" role="button">
+            🏖️ Turizm Rehberi
+        </a>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-secondary btn-lg" asp-controller="Admin" asp-action="Index" role="button">
+                ⚙️ Yönetim
+            </a>
+        }
+    </div>
 </div>
 
 <div class="row mt-5">
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 border-primary">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">🏙️ Kent Rehberi</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Hastaneler, bankalar, resmi kurumlar, okullar, alışveriş merkezleri ve daha fazlası...</p>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-check-circle text-success"></i> Hastaneler ve Sağlık Kuruluşları</li>
+                    <li><i class="bi bi-check-circle text-success"></i> Bankalar ve Finans Kurumları</li>
+                    <li><i class="bi bi-check-circle text-success"></i> Resmi Kurumlar</li>
+                    <li><i class="bi bi-check-circle text-success"></i> Eğitim Kurumları</li>
+                    <li><i class="bi bi-check-circle text-success"></i> Alışveriş Merkezleri</li>
+                </ul>
+                <a class="btn btn-primary" asp-controller="Harita" asp-action="Index">Kent Rehberine Git →</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 border-success">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">🏖️ Turizm Rehberi</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Müzeler, parklar, tarihi mekanlar, doğal alanlar ve turistik noktalar...</p>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-check-circle text-success"></i> Müzeler ve Kültür Merkezleri</li>
+                    <li><i class="bi bi-check-circle text-success"></i> Parklar ve Mesire Alanları</li>
+                    <li><i class="bi bi-check-circle text-success"></i> Tarihi Mekanlar</li>
+                    <li><i class="bi bi-check-circle text-success"></i> Doğal Alanlar</li>
+                    <li><i class="bi bi-check-circle text-success"></i> Turistik Tesisler</li>
+                </ul>
+                <a class="btn btn-success" asp-controller="Turizm" asp-action="Index">Turizm Rehberine Git →</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
     <div class="col-md-4">
         <div class="card">
             <div class="card-body text-center">
                 <i class="bi bi-map" style="font-size: 3rem; color: #0d6efd;"></i>
                 <h5 class="card-title mt-3">İnteraktif Harita</h5>
-                <p class="card-text">Şehirdeki tüm konumları interaktif harita üzerinde görüntüleyin.</p>
+                <p class="card-text">Tüm konumları interaktif harita üzerinde görüntüleyin.</p>
             </div>
         </div>
     </div>
     <div class="col-md-4">
         <div class="card">
             <div class="card-body text-center">
-                <i class="bi bi-search" style="font-size: 3rem; color: #0d6efd;"></i>
+                <i class="bi bi-search" style="font-size: 3rem; color: #198754;"></i>
                 <h5 class="card-title mt-3">Gelişmiş Arama</h5>
-                <p class="card-text">İstediğiniz konumu kolayca bulun ve detaylarına ulaşın.</p>
+                <p class="card-text">Kategori ve anahtar kelime ile kolayca arama yapın.</p>
             </div>
         </div>
     </div>
     <div class="col-md-4">
         <div class="card">
             <div class="card-body text-center">
-                <i class="bi bi-info-circle" style="font-size: 3rem; color: #0d6efd;"></i>
+                <i class="bi bi-info-circle" style="font-size: 3rem; color: #ffc107;"></i>
                 <h5 class="card-title mt-3">Detaylı Bilgiler</h5>
-                <p class="card-text">Her konum için adres, telefon ve çalışma saatleri bilgileri.</p>
+                <p class="card-text">Adres, telefon, çalışma saatleri ve daha fazlası.</p>
             </div>
         </div>
     </div>
