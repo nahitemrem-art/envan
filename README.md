@@ -56,6 +56,7 @@ Uygulama otomatik olarak migration'ları uygular ve örnek verileri yükler.
 **📚 Dokümantasyon:**
 - [XAMPP_SETUP.md](XAMPP_SETUP.md) - XAMPP ile kurulum (Windows) 💻
 - [QUICK_START.md](QUICK_START.md) - 5 dakikada başlangıç (Docker) 🚀
+- [KOORDINAT_GIRISI.md](KOORDINAT_GIRISI.md) - Koordinat girişi rehberi 📍
 - [SETUP.md](SETUP.md) - Detaylı kurulum 📖
 - [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - Sorun giderme 🔧
 - [MYSQL_MIGRATION.md](MYSQL_MIGRATION.md) - PostgreSQL'den geçiş rehberi 🔄

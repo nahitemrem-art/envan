@@ -77,15 +77,17 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label asp-for="Enlem" class="form-label">Enlem (Latitude)</label>
-                        <input asp-for="Enlem" type="number" step="0.0000001" class="form-control" />
+                        <input asp-for="Enlem" type="number" step="any" class="form-control" placeholder="40.777648" />
                         <span asp-validation-for="Enlem" class="text-danger"></span>
+                        <small class="form-text text-muted">Örn: 40.777648 (nokta kullanın)</small>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label asp-for="Boylam" class="form-label">Boylam (Longitude)</label>
-                        <input asp-for="Boylam" type="number" step="0.0000001" class="form-control" />
+                        <input asp-for="Boylam" type="number" step="any" class="form-control" placeholder="30.403113" />
                         <span asp-validation-for="Boylam" class="text-danger"></span>
+                        <small class="form-text text-muted">Örn: 30.403113 (nokta kullanın)</small>
                     </div>
                 </div>
             </div>
