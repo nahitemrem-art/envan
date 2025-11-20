@@ -9,8 +9,8 @@ public class EnvanterContextFactory : IDesignTimeDbContextFactory<EnvanterContex
     {
         var optionsBuilder = new DbContextOptionsBuilder<EnvanterContext>();
         
-        // MySQL connection string (local development)
-        var connectionString = "Server=localhost;Port=3306;Database=envanterdb;User=root;Password=root;";
+        // MySQL connection string (XAMPP - local development)
+        var connectionString = "Server=localhost;Port=3306;Database=envanterdb;User=root;Password=;";
         
         // MySQL server version
         var serverVersion = new MySqlServerVersion(new Version(8, 0, 21));

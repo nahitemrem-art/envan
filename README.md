@@ -21,33 +21,41 @@ ASP.NET Core 8 MVC uygulaması - Envanter Takip Sistemi ve Sakarya Kent Rehberi
 
 ### Gereksinimler
 - .NET 8.0 SDK
-- Docker (MySQL için) veya MySQL 8.0+
+- **XAMPP** (önerilen - MySQL içerir) VEYA
+- Docker (MySQL için) VEYA MySQL 8.0+
 
 ### ⚡ Hızlı Başlangıç
 
-**En kolay yol:**
+**XAMPP ile (Windows - Önerilen):**
 
+1. XAMPP'i başlatın ve MySQL'i çalıştırın
+2. phpMyAdmin'de `envanterdb` veritabanını oluşturun
+3. PowerShell'de:
 ```bash
-./start.sh
+dotnet run
 ```
 
-**Manuel başlangıç:**
+**Detaylı XAMPP kurulumu için:** [XAMPP_SETUP.md](XAMPP_SETUP.md)
+
+---
+
+**Docker ile (Linux/Mac):**
 
 ```bash
-# 1. MySQL başlat
+# En kolay yol
+./start.sh
+
+# Veya manuel
 docker run -d --name mysql-dev -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=envanterdb -p 3306:3306 mysql:8.0
-
-# 2. 20 saniye bekle (MySQL hazır olsun)
 sleep 20
-
-# 3. Uygulamayı başlat
 dotnet run
 ```
 
 Uygulama otomatik olarak migration'ları uygular ve örnek verileri yükler.
 
 **📚 Dokümantasyon:**
-- [QUICK_START.md](QUICK_START.md) - 5 dakikada başlangıç 🚀
+- [XAMPP_SETUP.md](XAMPP_SETUP.md) - XAMPP ile kurulum (Windows) 💻
+- [QUICK_START.md](QUICK_START.md) - 5 dakikada başlangıç (Docker) 🚀
 - [SETUP.md](SETUP.md) - Detaylı kurulum 📖
 - [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - Sorun giderme 🔧
 - [MYSQL_MIGRATION.md](MYSQL_MIGRATION.md) - PostgreSQL'den geçiş rehberi 🔄
