@@ -2,6 +2,21 @@
 
 ASP.NET Core 8 MVC uygulaması - Envanter Takip Sistemi ve Sakarya Kent Rehberi
 
+## ⚠️ İLK KURULUM SONRASI
+
+Eğer `Unknown column 'k.EkleyenKullanici'` hatası alıyorsanız:
+
+**👉 [VERITABANI_HATASI_COZUM.md](VERITABANI_HATASI_COZUM.md) dosyasını okuyun!**
+
+**Hızlı Çözüm:**
+1. phpMyAdmin'i açın: http://localhost/phpmyadmin
+2. `envanterdb` veritabanını seçin
+3. SQL sekmesinde çalıştırın:
+```sql
+ALTER TABLE Konumlar ADD COLUMN EkleyenKullanici VARCHAR(100) NULL;
+```
+4. Uygulamayı yeniden başlatın: `dotnet run`
+
 ## Özellikler
 
 ### Kent Rehberi (Yeni!)
