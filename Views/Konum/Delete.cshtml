@@ -1,0 +1,56 @@
+@model EnvanterTakip.Models.Konum
+
+@{
+    ViewData["Title"] = "Konum Sil";
+}
+
+<h2>Konum Sil</h2>
+
+<h3>Bu konumu silmek istediğinizden emin misiniz?</h3>
+<div>
+    <hr>
+    <dl class="row">
+        <dt class="col-sm-3">Ad</dt>
+        <dd class="col-sm-9">@Model.Ad</dd>
+        
+        <dt class="col-sm-3">Kategori</dt>
+        <dd class="col-sm-9">
+            <span class="badge" style="background-color: @Model.Kategori?.Renk ?? "#6c757d">
+                @Model.Kategori?.Ad
+            </span>
+        </dd>
+        
+        <dt class="col-sm-3">Açıklama</dt>
+        <dd class="col-sm-9">@Model.Aciklama</dd>
+        
+        <dt class="col-sm-3">Adres</dt>
+        <dd class="col-sm-9">@Model.Adres</dd>
+        
+        <dt class="col-sm-3">Telefon</dt>
+        <dd class="col-sm-9">@Model.Telefon</dd>
+        
+        <dt class="col-sm-3">E-posta</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
+        
+        <dt class="col-sm-3">Koordinatlar</dt>
+        <dd class="col-sm-9">@Model.Enlem, @Model.Boylam</dd>
+        
+        <dt class="col-sm-3">Aktif</dt>
+        <dd class="col-sm-9">
+            @if (Model.Aktif)
+            {
+                <span class="badge bg-success">Evet</span>
+            }
+            else
+            {
+                <span class="badge bg-danger">Hayır</span>
+            }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-action="Index" class="btn btn-secondary">İptal</a>
+    </form>
+</div>

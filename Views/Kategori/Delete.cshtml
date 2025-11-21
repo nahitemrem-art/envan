@@ -1,0 +1,36 @@
+@model EnvanterTakip.Models.Kategori
+
+@{
+    ViewData["Title"] = "Kategori Sil";
+}
+
+<h2>Kategori Sil</h2>
+
+<h3>Bu kategoriyi silmek istediğinizden emin misiniz?</h3>
+<div>
+    <hr>
+    <dl class="row">
+        <dt class="col-sm-3">Ad</dt>
+        <dd class="col-sm-9">@Model.Ad</dd>
+        
+        <dt class="col-sm-3">Açıklama</dt>
+        <dd class="col-sm-9">@Model.Aciklama</dd>
+        
+        <dt class="col-sm-3">İkon</dt>
+        <dd class="col-sm-9">@Model.Ikon</dd>
+        
+        <dt class="col-sm-3">Renk</dt>
+        <dd class="col-sm-9">
+            @if (!string.IsNullOrEmpty(Model.Renk))
+            {
+                <span class="badge" style="background-color: @Model.Renk">@Model.Renk</span>
+            }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-action="Index" class="btn btn-secondary">İptal</a>
+    </form>
+</div>

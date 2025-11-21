@@ -1,0 +1,108 @@
+@model EnvanterTakip.Models.Konum
+
+@{
+    ViewData["Title"] = Model.Ad;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-action="Index">Kent Rehberi</a></li>
+                <li class="breadcrumb-item active">@Model.Ad</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            @if (!string.IsNullOrEmpty(Model.ResimUrl))
+            {
+                <img src="@Model.ResimUrl" class="card-img-top" alt="@Model.Ad">
+            }
+            <div class="card-body">
+                <h2 class="card-title">@Model.Ad</h2>
+                <p class="mb-2">
+                    <span class="badge" style="background-color: @Model.Kategori?.Renk ?? "#6c757d">
+                        @Model.Kategori?.Ad
+                    </span>
+                </p>
+                
+                @if (!string.IsNullOrEmpty(Model.Aciklama))
+                {
+                    <p class="card-text">@Model.Aciklama</p>
+                }
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @if (!string.IsNullOrEmpty(Model.Adres))
+                        {
+                            <p><strong><i class="bi bi-geo-alt"></i> Adres:</strong><br>@Model.Adres</p>
+                        }
+                        
+                        @if (!string.IsNullOrEmpty(Model.Telefon))
+                        {
+                            <p><strong><i class="bi bi-telephone"></i> Telefon:</strong><br>
+                                <a href="tel:@Model.Telefon">@Model.Telefon</a>
+                            </p>
+                        }
+                    </div>
+                    <div class="col-md-6">
+                        @if (!string.IsNullOrEmpty(Model.Email))
+                        {
+                            <p><strong><i class="bi bi-envelope"></i> E-posta:</strong><br>
+                                <a href="mailto:@Model.Email">@Model.Email</a>
+                            </p>
+                        }
+                        
+                        @if (!string.IsNullOrEmpty(Model.Website))
+                        {
+                            <p><strong><i class="bi bi-globe"></i> Web Sitesi:</strong><br>
+                                <a href="@Model.Website" target="_blank">@Model.Website</a>
+                            </p>
+                        }
+
+                        @if (!string.IsNullOrEmpty(Model.CalismaSaatleri))
+                        {
+                            <p><strong><i class="bi bi-clock"></i> Çalışma Saatleri:</strong><br>@Model.CalismaSaatleri</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Harita</h5>
+            </div>
+            <div class="card-body p-0">
+                <div id="map" style="height: 400px; width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+}
+
+@section Scripts {
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([@Model.Enlem.ToString(System.Globalization.CultureInfo.InvariantCulture), @Model.Boylam.ToString(System.Globalization.CultureInfo.InvariantCulture)], 15);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([@Model.Enlem.ToString(System.Globalization.CultureInfo.InvariantCulture), @Model.Boylam.ToString(System.Globalization.CultureInfo.InvariantCulture)])
+            .addTo(map)
+            .bindPopup('<b>@Html.Raw(Model.Ad)</b>').openPopup();
+    </script>
+}

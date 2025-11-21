@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj": {}
+    "/home/engine/project/EnvanterTakip.csproj": {}
   },
   "projects": {
-    "D:\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj": {
+    "/home/engine/project/EnvanterTakip.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj",
+        "projectUniqueName": "/home/engine/project/EnvanterTakip.csproj",
         "projectName": "EnvanterTakip",
-        "projectPath": "D:\\myapp\\c#\\envan\\EnvanterTakip\\EnvanterTakip.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\myapp\\c#\\envan\\EnvanterTakip\\obj\\",
+        "projectPath": "/home/engine/project/EnvanterTakip.csproj",
+        "packagesPath": "/home/engine/.nuget/packages/",
+        "outputPath": "/home/engine/project/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/engine/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,13 +32,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -48,11 +42,11 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.8, )"
+              "version": "[8.0.11, )"
             },
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[9.0.4, )"
+              "version": "[8.0.2, )"
             }
           },
           "imports": [
@@ -74,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.121/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

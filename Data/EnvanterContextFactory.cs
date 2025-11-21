@@ -9,23 +9,13 @@ public class EnvanterContextFactory : IDesignTimeDbContextFactory<EnvanterContex
     {
         var optionsBuilder = new DbContextOptionsBuilder<EnvanterContext>();
         
-        // PostgreSQL URL'ini parse et
-        var databaseUrl = "postgresql://envanterdb_user:XqwzlDcZklWMQPsb01FBhnTqQllghjxN@dpg-d2e7hoc9c44c73egrho0-a/envanterdb";
+        // MySQL connection string (XAMPP - local development)
+        var connectionString = "Server=localhost;Port=3306;Database=envanterdb;User=root;Password=;";
         
-        string connectionString;
-        if (!string.IsNullOrEmpty(databaseUrl) && databaseUrl.StartsWith("postgresql://"))
-        {
-            // PostgreSQL URL'ini Npgsql formatına çevir
-            var uri = new Uri(databaseUrl);
-            var userInfo = uri.UserInfo.Split(':');
-            connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.Trim('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Require;Trust Server Certificate=true";
-        }
-        else
-        {
-            connectionString = databaseUrl;
-        }
+        // MySQL server version
+        var serverVersion = new MySqlServerVersion(new Version(8, 0, 21));
         
-        optionsBuilder.UseNpgsql(connectionString);
+        optionsBuilder.UseMySql(connectionString, serverVersion);
         return new EnvanterContext(optionsBuilder.Options);
     }
 }

@@ -1,0 +1,52 @@
+@model EnvanterTakip.Models.Kategori
+
+@{
+    ViewData["Title"] = "Kategori Düzenle";
+}
+
+<h2>Kategori Düzenle</h2>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="mb-3">
+                <label asp-for="Ad" class="form-label"></label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="Aciklama" class="form-label"></label>
+                <textarea asp-for="Aciklama" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="Ikon" class="form-label"></label>
+                <input asp-for="Ikon" class="form-control" placeholder="bi-hospital, bi-bank, vb." />
+                <span asp-validation-for="Ikon" class="text-danger"></span>
+                <small class="form-text text-muted">Bootstrap Icons sınıf adı (örn: bi-hospital)</small>
+            </div>
+            
+            <div class="mb-3">
+                <label asp-for="Renk" class="form-label"></label>
+                <input asp-for="Renk" type="color" class="form-control form-control-color" />
+                <span asp-validation-for="Renk" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+                <a asp-action="Index" class="btn btn-secondary">İptal</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
