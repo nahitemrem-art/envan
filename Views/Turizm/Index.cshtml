@@ -84,7 +84,7 @@
                         <a asp-action="Detay" asp-route-id="@konum.Id" class="btn btn-sm btn-primary">
                             <i class="bi bi-info-circle"></i> Detaylar
                         </a>
-                        <button class="btn btn-sm btn-outline-primary" onclick="goToLocation(@konum.Enlem, @konum.Boylam)">
+                        <button class="btn btn-sm btn-outline-primary" onclick="goToLocation(@konum.Enlem.ToString(System.Globalization.CultureInfo.InvariantCulture), @konum.Boylam.ToString(System.Globalization.CultureInfo.InvariantCulture))">
                             <i class="bi bi-pin-map"></i> Haritada Göster
                         </button>
                     </div>
@@ -120,8 +120,10 @@
 
         @foreach (var konum in Model)
         {
+            var enlem = konum.Enlem.ToString(System.Globalization.CultureInfo.InvariantCulture);
+            var boylam = konum.Boylam.ToString(System.Globalization.CultureInfo.InvariantCulture);
             <text>
-            var marker = L.marker([@konum.Enlem, @konum.Boylam]).addTo(map);
+            var marker = L.marker([@enlem, @boylam]).addTo(map);
             marker.bindPopup(`
                 <div style="min-width: 200px;">
                     <h6>@konum.Ad</h6>
@@ -133,16 +135,15 @@
                     <a href="@Url.Action("Detay", new { id = konum.Id })" class="btn btn-sm btn-primary mt-2">Detaylar</a>
                 </div>
             `);
-            markers.push(marker);
+            markers.push({marker: marker, lat: @enlem, lng: @boylam});
             </text>
         }
 
         function goToLocation(lat, lng) {
             map.setView([lat, lng], 16);
             markers.forEach(m => {
-                var pos = m.getLatLng();
-                if (pos.lat === lat && pos.lng === lng) {
-                    m.openPopup();
+                if (Math.abs(m.lat - lat) < 0.0001 && Math.abs(m.lng - lng) < 0.0001) {
+                    m.marker.openPopup();
                 }
             });
             window.scrollTo({ top: 0, behavior: 'smooth' });

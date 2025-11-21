@@ -51,6 +51,7 @@ namespace EnvanterTakip.Controllers
             if (ModelState.IsValid)
             {
                 konum.EklenmeTarihi = DateTime.UtcNow;
+                konum.EkleyenKullanici = User.Identity?.Name;
                 _context.Add(konum);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -71,6 +72,16 @@ namespace EnvanterTakip.Controllers
             {
                 return NotFound();
             }
+
+            var currentUser = User.Identity?.Name;
+            var isAdmin = User.IsInRole("Admin");
+            
+            if (!isAdmin && konum.EkleyenKullanici != currentUser)
+            {
+                TempData["Error"] = "Bu konumu sadece ekleyen kullanıcı düzenleyebilir.";
+                return RedirectToAction(nameof(Index));
+            }
+
             ViewBag.Kategoriler = await _context.Kategoriler.ToListAsync();
             return View(konum);
         }
@@ -84,10 +95,26 @@ namespace EnvanterTakip.Controllers
                 return NotFound();
             }
 
+            var existingKonum = await _context.Konumlar.AsNoTracking().FirstOrDefaultAsync(k => k.Id == id);
+            if (existingKonum == null)
+            {
+                return NotFound();
+            }
+
+            var currentUser = User.Identity?.Name;
+            var isAdmin = User.IsInRole("Admin");
+            
+            if (!isAdmin && existingKonum.EkleyenKullanici != currentUser)
+            {
+                TempData["Error"] = "Bu konumu sadece ekleyen kullanıcı düzenleyebilir.";
+                return RedirectToAction(nameof(Index));
+            }
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    konum.EkleyenKullanici = existingKonum.EkleyenKullanici;
                     _context.Update(konum);
                     await _context.SaveChangesAsync();
                 }
@@ -123,6 +150,15 @@ namespace EnvanterTakip.Controllers
                 return NotFound();
             }
 
+            var currentUser = User.Identity?.Name;
+            var isAdmin = User.IsInRole("Admin");
+            
+            if (!isAdmin && konum.EkleyenKullanici != currentUser)
+            {
+                TempData["Error"] = "Bu konumu sadece ekleyen kullanıcı silebilir.";
+                return RedirectToAction(nameof(Index));
+            }
+
             return View(konum);
         }
 
@@ -133,6 +169,15 @@ namespace EnvanterTakip.Controllers
             var konum = await _context.Konumlar.FindAsync(id);
             if (konum != null)
             {
+                var currentUser = User.Identity?.Name;
+                var isAdmin = User.IsInRole("Admin");
+                
+                if (!isAdmin && konum.EkleyenKullanici != currentUser)
+                {
+                    TempData["Error"] = "Bu konumu sadece ekleyen kullanıcı silebilir.";
+                    return RedirectToAction(nameof(Index));
+                }
+
                 _context.Konumlar.Remove(konum);
                 await _context.SaveChangesAsync();
             }

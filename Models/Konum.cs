@@ -43,5 +43,8 @@ namespace EnvanterTakip.Models
 
         [StringLength(500)]
         public string? CalismaSaatleri { get; set; }
+
+        [StringLength(100)]
+        public string? EkleyenKullanici { get; set; }
     }
 }

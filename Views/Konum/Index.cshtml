@@ -1,7 +1,10 @@
 @model IEnumerable<EnvanterTakip.Models.Konum>
+@using Microsoft.AspNetCore.Identity
 
 @{
     ViewData["Title"] = "Konum Yönetimi";
+    var currentUser = User.Identity?.Name;
+    var isAdmin = User.IsInRole("Admin");
 }
 
 <div class="row mb-3">
@@ -74,8 +77,15 @@
                         }
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+                        @if (isAdmin || item.EkleyenKullanici == currentUser)
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+                        }
+                        else
+                        {
+                            <span class="text-muted small">Yetkiniz yok</span>
+                        }
                     </td>
                 </tr>
             }

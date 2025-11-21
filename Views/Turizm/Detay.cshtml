@@ -82,7 +82,7 @@
                     <a asp-controller="Turizm" asp-action="Index" class="btn btn-secondary">
                         <i class="bi bi-arrow-left"></i> Listeye Dön
                     </a>
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=@Model.Enlem,@Model.Boylam" 
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=@Model.Enlem.ToString(System.Globalization.CultureInfo.InvariantCulture),@Model.Boylam.ToString(System.Globalization.CultureInfo.InvariantCulture)" 
                        target="_blank" 
                        class="btn btn-primary">
                         <i class="bi bi-map"></i> Yol Tarifi Al
@@ -126,13 +126,16 @@
 @section Scripts {
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map').setView([@Model.Enlem, @Model.Boylam], 15);
+        var enlem = @Model.Enlem.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        var boylam = @Model.Boylam.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        
+        var map = L.map('map').setView([enlem, boylam], 15);
         
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        L.marker([@Model.Enlem, @Model.Boylam])
+        L.marker([enlem, boylam])
             .addTo(map)
             .bindPopup('<b>@Model.Ad</b><br>@Model.Kategori?.Ad')
             .openPopup();
